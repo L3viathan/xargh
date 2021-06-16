@@ -27,6 +27,7 @@ fn main() {
                 .allow_hyphen_values(true)
                 .multiple(true)
                 .min_values(1)
+                .required(true)
                 .help("The command to run per line of stdin"),
         )
         .get_matches();
