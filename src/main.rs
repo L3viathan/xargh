@@ -51,7 +51,6 @@ fn main() {
                 Command::new("sh")
                     .arg("-c")
                     .arg(program.replace(re, &text))
-                    .args(arguments.iter().map(|x| x.replace(re, &text)))
                     .stdin(Stdio::null())
                     .status()
                     .expect("Failed");
@@ -69,9 +68,7 @@ fn main() {
             if matches.is_present("shell") {
                 Command::new("sh")
                     .arg("-c")
-                    .arg(program)
-                    .args(&arguments)
-                    .arg(text)
+                    .arg(program.to_owned() + " " + &text)
                     .stdin(Stdio::null())
                     .status()
                     .expect("Failed");
